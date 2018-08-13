@@ -36,7 +36,7 @@ bool MinimalModel::algorithmStep()
             if(m_toroidal){
                 right_cell = nodes().at(0).attr(m_stateAttrId).toBool();
             } else {
-                left_cell = m_edgeCaseValue;
+                right_cell = m_edgeCaseValue;
             }
         } else {
 //            left_cell XOR (central_cell OR right_cell)

@@ -18,7 +18,15 @@ bool MinimalModel::algorithmStep()
     std::vector<bool> nextStates;
     nextStates.reserve(nodes().size());
 
-    return false;
+    for (Node node : nodes()) {
+        if(node.id() == 0 || node.id() == (nodes().size()-1)){ // Edge cases
+            continue;
+        } else {
+//            left_cell XOR (central_cell OR right_cell)
+//            bool left_cell = nodes.at(node.id()-1).attr(m_stateAttrId).toBool();
+        }
+    }
+    return true;
 }
 
 } // evoplex

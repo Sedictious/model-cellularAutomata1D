@@ -10,6 +10,9 @@ namespace evoplex {
 bool MinimalModel::init()
 {
     m_stateAttrId = node(0).attrs().indexOf("state");
+    m_toroidal = attr("toroidal").toBool();
+    m_edgeCaseValue = attr("edgeCaseValue").toBool();
+
     return m_stateAttrId >= 0;
 }
 

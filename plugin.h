@@ -41,6 +41,8 @@ public:
     // Values customOutputs(const Values& inputs) const override;
 private:
     int m_stateAttrId;
+    bool m_toroidal;
+    bool m_edgeCaseValue;
 };
 } // evoplex
 #endif // MINIMAL_MODEL_H

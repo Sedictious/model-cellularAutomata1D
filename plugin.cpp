@@ -25,11 +25,19 @@ bool MinimalModel::algorithmStep()
         bool left_cell, right_cell;
         if (node.id() == 0) { // Edge case 1
             // Toroidal
-            left_cell = nodes().at(nodes().size()-1).attr(m_stateAttrId).toBool();
+            if(m_toroidal){
+                left_cell = nodes().at(nodes().size()-1).attr(m_stateAttrId).toBool();
+            } else {
+                left_cell = m_edgeCaseValue;
+            }
             right_cell = nodes().at(1).attr(m_stateAttrId).toBool();
         } else if (node.id() == (nodes().size()-1)) {
             left_cell = nodes().at(nodes().size()-2).attr(m_stateAttrId).toBool();
-            right_cell = nodes().at(0).attr(m_stateAttrId).toBool();
+            if(m_toroidal){
+                right_cell = nodes().at(0).attr(m_stateAttrId).toBool();
+            } else {
+                left_cell = m_edgeCaseValue;
+            }
         } else {
 //            left_cell XOR (central_cell OR right_cell)
             left_cell = nodes().at(node.id()-1).attr(m_stateAttrId).toBool();

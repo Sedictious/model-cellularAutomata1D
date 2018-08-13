@@ -9,11 +9,15 @@ namespace evoplex {
 
 bool MinimalModel::init()
 {
-    return true;
+    m_stateAttrId = node(0).attrs().indexOf("state");
+    return m_stateAttrId >= 0;
 }
 
 bool MinimalModel::algorithmStep()
 {
+    std::vector<bool> nextStates;
+    nextStates.reserve(nodes().size());
+
     return false;
 }
 

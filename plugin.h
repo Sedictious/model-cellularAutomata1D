@@ -39,6 +39,8 @@ public:
     // this method will be called once at each time step, receiving the
     // requested inputs.
     // Values customOutputs(const Values& inputs) const override;
+private:
+    int m_stateAttrId;
 };
 } // evoplex
 #endif // MINIMAL_MODEL_H

@@ -7,7 +7,7 @@
   "description": "This is a mininal example of a model plugin for Evoplex.",
 
   "pluginAttributesScope": [],
-  "nodeAttributesScope": [],
+  "nodeAttributesScope": [ {"state": "bool"} ],
   "edgeAttributesScope": [],
 
   "supportedGraphs": [],

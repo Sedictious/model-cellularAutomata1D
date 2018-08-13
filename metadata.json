@@ -6,7 +6,7 @@
   "author": "Evoplex",
   "description": "This is a mininal example of a model plugin for Evoplex.",
 
-  "pluginAttributesScope": [],
+  "pluginAttributesScope": [ {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],
   "edgeAttributesScope": [],
 

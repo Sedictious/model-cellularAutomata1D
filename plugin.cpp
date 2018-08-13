@@ -38,6 +38,12 @@ bool MinimalModel::algorithmStep()
         bool central_cell_next_state = left_cell ^ (central_cell || right_cell);
         nextStates.emplace_back(central_cell_next_state);
     }
+
+    size_t i = 0;
+    for (Node node : nodes()) {
+        node.setAttr(m_stateAttrId, Value(nextStates.at(i)).toBool());
+        ++i;
+    }
     return true;
 }
 

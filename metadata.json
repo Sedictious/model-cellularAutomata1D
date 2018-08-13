@@ -1,10 +1,10 @@
 {
   "type": "model",
-  "uid": "minimalModel",
+  "uid": "rule30Model",
   "version": 1,
-  "title": "Mininal Model",
+  "title": "Rule 30 Model",
   "author": "Evoplex",
-  "description": "This is a mininal example of a model plugin for Evoplex.",
+  "description": "This model implements Stephen Wolfram's Rule 30 for cellular automata.",
 
   "pluginAttributesScope": [ {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],

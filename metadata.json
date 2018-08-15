@@ -6,7 +6,7 @@
   "author": "Evoplex",
   "description": "This model implements cellular automaton rules.",
 
-  "pluginAttributesScope": [ {”rule”: "int{30,32,110,250"}, {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
+  "pluginAttributesScope": [ {"rule": "int{30,32,110,250}"}, {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],
   "edgeAttributesScope": [],
 

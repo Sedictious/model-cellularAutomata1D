@@ -62,6 +62,12 @@ bool MinimalModel::algorithmStep()
         case 110:
             central_cell_next_state = (right_cell && !central_cell) || (!left_cell && central_cell) || (!right_cell && central_cell);
             break;
+        case 32:
+            central_cell_next_state = left_cell && !central_cell && right_cell;
+            break;
+        case 250:
+            central_cell_next_state = left_cell || right_cell;
+            break;
         default:
             break;
         }

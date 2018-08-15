@@ -16,6 +16,8 @@ bool MinimalModel::init()
     m_toroidal = attr("toroidal").toBool();
     // if the structure is toroidal, this attribute is irrelevant
     m_edgeCaseValue = attr("edgeCaseValue").toBool();
+    // determines which rule to use
+    m_rule = attr("rule").toInt();
 
     return m_stateAttrId >= 0;
 }
@@ -51,8 +53,17 @@ bool MinimalModel::algorithmStep()
 
         bool central_cell = node.attr(m_stateAttrId).toBool();
 
-        // next state of central cell = [left_cell XOR (central_cell OR right_cell)]
-        bool central_cell_next_state = left_cell ^ (central_cell || right_cell);
+        bool central_cell_next_state;
+
+        switch (m_rule) {
+        case 30:
+            // next state of central cell = [left_cell XOR (central_cell OR right_cell)]
+            central_cell_next_state = left_cell ^ (central_cell || right_cell);
+            break;
+        default:
+            break;
+        }
+
         nextStates.emplace_back(central_cell_next_state);
     }
 

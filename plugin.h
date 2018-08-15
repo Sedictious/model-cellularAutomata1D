@@ -41,6 +41,7 @@ public:
     // Values customOutputs(const Values& inputs) const override;
 private:
     int m_stateAttrId;
+    int m_rule;
     bool m_toroidal;
     bool m_edgeCaseValue;
 };

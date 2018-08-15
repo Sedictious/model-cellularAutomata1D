@@ -57,8 +57,10 @@ bool MinimalModel::algorithmStep()
 
         switch (m_rule) {
         case 30:
-            // next state of central cell = [left_cell XOR (central_cell OR right_cell)]
             central_cell_next_state = left_cell ^ (central_cell || right_cell);
+            break;
+        case 110:
+            central_cell_next_state = (right_cell && !central_cell) || (!left_cell && central_cell) || (!right_cell && central_cell);
             break;
         default:
             break;

@@ -1,12 +1,12 @@
 {
   "type": "model",
-  "uid": "rule30Model",
+  "uid": "cellularAutomatonModel",
   "version": 1,
-  "title": "Rule 30 Model",
+  "title": "Cellular Automaton",
   "author": "Evoplex",
-  "description": "This model implements Stephen Wolfram's Rule 30 for cellular automata.",
+  "description": "This model implements cellular automaton rules.",
 
-  "pluginAttributesScope": [ {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
+  "pluginAttributesScope": [ {”rule”: "int{30,32,110,250"}, {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],
   "edgeAttributesScope": [],
 

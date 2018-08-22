@@ -8,9 +8,9 @@ It implements the [elementary cellular automaton rules](http://mathworld.wolfram
 
 ## How it works
 
-The model runs in a lattice grid (i.e., uses the `squareGrid` graph generator).
+The model runs in a lattice grid, i.e., it uses the `squareGrid` graph generator.
 
-Each node can be in one of two possible states: on or off.
+Each cell (node in the graph) can be in one of two possible states: on or off.
 
 Starting from the first row in the graph, at each time step:
 

@@ -18,7 +18,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-find_package(EvoplexCore 0.1.0 REQUIRED)
+find_package(EvoplexCore 0.2.0 REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Concurrent REQUIRED)
 

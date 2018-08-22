@@ -1,15 +1,13 @@
 {
   "type": "model",
-  "uid": "cellularAutomatonModel",
+  "uid": "cellularAutomata1D",
   "version": 1,
-  "title": "Cellular Automaton",
-  "author": "Evoplex",
-  "description": "This model implements cellular automaton rules.",
+  "title": "Cellular Automata 1D",
+  "author": "Ethan Padden and Marcos Cardinot",
+  "description": "This model implements a few elementary cellular automaton rules.",
 
-  "pluginAttributesScope": [ {"rule": "int{30,32,110,250}"}, {"toroidal": "bool"}, {"edgeCaseValue": "bool"} ],
+  "pluginAttributesScope": [ {"rule": "int{30,32,110,250}"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],
-  "edgeAttributesScope": [],
 
-  "supportedGraphs": [ "squareGrid" ],
-  "customOutputs": []
+  "supportedGraphs": [ "squareGrid" ]
 }

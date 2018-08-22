@@ -1,49 +1,39 @@
 /**
- * Evoplex <https://evoplex.org>
- * Copyright (C) 2016-present
+ * Copyright (c) 2018 - Marcos Cardinot <marcos@cardinot.net>
+ * Copyright (c) 2018 - Ethan Padden <e.padden1@nuigalway.ie>
+ *
+ * This source code is licensed under the MIT license found in
+ * the LICENSE file in the root directory of this source tree.
  */
 
-#ifndef MINIMAL_MODEL_H
-#define MINIMAL_MODEL_H
+#ifndef CELLULARAUTOMATA1D_H
+#define CELLULARAUTOMATA1D_H
 
 #include <plugininterface.h>
 
 namespace evoplex {
-class MinimalModel: public AbstractModel
+class CellularAutomata1D: public AbstractModel
 {
 public:
-    // Initializes the model.
-    // This method is called when the model is created and
-    // is mainly used to validate inputs and set the environment.
-    // Return true if successful
     bool init() override;
-
-    // [OPTIONAL]
-    // It is executed before the algorithmStep() loop
-    // The default implementation of this method does nothing.
-    // void beforeLoop() override;
-
-    // It is executed in a loop and must contain all the logic to perform ONE step.
-    // Return true if algorithm is good for another step or false to stop asap.
     bool algorithmStep() override;
 
-    // [OPTIONAL]
-    // It is executed after the algorithmStep() loop ends.
-    // The default implementation of this method does nothing.
-    // void afterLoop() override;
-
-    // [OPTIONAL]
-    // It allows implementing custom outputs which can be plotted or stored
-    // in a file through Evoplex. The "inputs" must be defined in the
-    // metadata.json file. If an experiment requests some custom output,
-    // this method will be called once at each time step, receiving the
-    // requested inputs.
-    // Values customOutputs(const Values& inputs) const override;
 private:
-    int m_stateAttrId;
-    int m_rule;
-    bool m_toroidal;
-    bool m_edgeCaseValue;
+    int m_currRow;
+
+    int m_stateAttrId;  // the id of the `state` node attribute
+    int m_rule;         // model attribute: cellular automaton rule
+
+    bool m_toroidal;    // true if the graph is a toroid
+    int m_width;        // the number of columns in the `squareGrid` graph
+    int m_height;       // the number of rows in the `squareGrid` graph
+
+    // returns the next state of a node based on the state
+    // of itself and its neighbours on the left and right
+    Value nextState(const Node& leftNode, const Node& node, const Node& rightNode) const;
+
+    // return the linear index of an element in a matrix.
+    int linearIdx(int row, int col) const;
 };
 } // evoplex
-#endif // MINIMAL_MODEL_H
+#endif // CELLULARAUTOMATA1D_H

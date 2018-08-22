@@ -1,55 +1,50 @@
-# Evoplex: Minimal Model
+# Cellular Automata 1D Model
 
-This is a minimum example of a model plugin for [Evoplex](https://evoplex.github.io). It has the essential files for you to create a new model plugin:
-``` bash
-├── CMakeLists.txt
-├── metadata.json
-├── plugin.cpp
-└── plugin.h
-```
-You do not need to touch the `CMakeLists.txt` file. Also, you must NOT rename any of those files.
+## What is it?
 
-:point_right: **Note:** you *DO NOT* need to compile Evoplex from source to be able to create plugins.
+This is a model plugin for [Evoplex](https://evoplex.org) and is included by default in the software.
 
-### Installing dependencies
-* If you compiled Evoplex from source, you already have all dependencies to compile a plugin and *DO NOT* have to install anything else.
-* If you installed Evoplex from the binary packages, you will have to install the dependencies as follows:
-    * [Instructions for Linux](https://github.com/evoplex/evoplex/wiki/Building-on-Linux#installing-dependencies)
-    * [Instructions for MacOS](https://github.com/evoplex/evoplex/wiki/Building-on-MacOS#installing-dependencies)
-    * [Instructions for Windows](https://github.com/evoplex/evoplex/wiki/Building-on-Windows#installing-dependencies)
+It implements the [elementary cellular automaton rules](http://mathworld.wolfram.com/ElementaryCellularAutomaton.html) 30, 32, 110 and 250.
 
-### Compiling this plugin
+## How it works
 
-:point_right: if you compiled Evoplex from source in Debug mode, you should also compile your plugin in Debug mode.
+The model runs in a lattice grid (i.e., uses the `squareGrid` graph generator).
 
-:point_right: the plugin must be compiled with the same architecture (32/64 bits) of Evoplex.
+Each node can be in one of two possible states: on or off.
 
-#### from QtCreator
-* Open the `CMakeLists.txt`
-* In the projects page, make sure the `EvoplexCore_DIR` is set. If it shows `EvoplexCore_DIR-NOTFOUND` and you compiled Evoplex from source (eg., at `~/evoplex/build`), set it to `~/evoplex/build/src/core/EvoplexCore/` as shown [here](https://i.imgur.com/hyKuFR3.png).
-* Build
+Starting from the first row in the graph, at each time step:
 
-#### from command line
-Assuming you placed this repository at `~/evoplex/minimal-model` and you are at `~/evoplex`, just run the commands below:
-``` bash
-mkdir build-plugin
-cd build-plugin
-cmake ../minimal-model
-cmake --build .
-```
-When you run the `cmake` command, you might get an **error** like `FindEvoplexCore.cmake` not found. If you compiled Evoplex from source (eg., at `~/evoplex/build`), just run the command below:
-``` bash
-export EvoplexCore_DIR=~/evoplex/build/src/core/EvoplexCore/
-```
+- based on the selected rule, compute the next state for each cell in the current row;
+- assign the new states to the row below.
 
+## Examples
 
-## Running this plugin
-After compiling the plugin, open Evoplex, go to the `Plugins` page, click on `import` and select the `plugin_minimal-model` file at `~/evoplex/minimal-model/build/plugin/`. The plugin will now be available in the `Projects` page.
+The figures below were produced using this model in Evoplex.
 
-## Support
-- Ask a question in the [mailing list](https://groups.google.com/group/evoplex) (or send it directly to evoplex@googlegroups.com)
-- Follow us on [Twitter](https://twitter.com/EvoplexMAS)
-- Join us on our [Gitter chat channel](https://gitter.im/EvoplexMAS/evoplex)
+<p align="center">
+<img src="example1.gif" alt="Example" width="70%"></br>
+Rule 30: initial population with all cells off (blue) and one on-cell in the first row.
+</p>
 
-## Licensing
-This plugin is available freely under the [MIT license](https://opensource.org/licenses/MIT).
+<p align="center">
+<img src="example2.gif" alt="Example" width="70%"></br>
+Rule 110: random initial population.
+</p>
+
+<p align="center">
+<img src="example3.gif" alt="Example" width="70%"></br>
+Rule 110: initial population with all cells off (blue) and one on-cell in the first row.
+</p>
+
+## References
+- [1] Weisstein, Eric W. "Elementary Cellular Automaton." From MathWorld--A Wolfram Web Resource. [http://mathworld.wolfram.com/ElementaryCellularAutomaton.html](http://mathworld.wolfram.com/ElementaryCellularAutomaton.html)
+- [2] Weisstein, Eric W. "Rule 30." From MathWorld--A Wolfram Web Resource. [http://mathworld.wolfram.com/Rule30.html](http://mathworld.wolfram.com/Rule30.html)
+- [3] Weisstein, Eric W. "Rule 110." From MathWorld--A Wolfram Web Resource. [http://mathworld.wolfram.com/Rule110.html](http://mathworld.wolfram.com/Rule110.html)
+
+## How to cite
+If you mention this model or the Evoplex software in a publication, please cite it as:
+
+> Marcos Cardinot, Colm O'Riordan, & Josephine Griffith. (2018). Evoplex: a powerful multi-agent system for networks. Zenodo. http://doi.org/10.5281/zenodo.1340734
+
+## License
+This plugin is licensed under the [MIT License](https://opensource.org/licenses/MIT) terms.

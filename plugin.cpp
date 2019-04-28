@@ -37,9 +37,7 @@ bool CellularAutomata1D::init()
     m_stateAttrId = node(0).attrs().indexOf("state");
 
     // determines which rule to use
-    m_rule = attr("rule").toInt();
-    m_binrule = QString::number(m_rule, 2);
-    m_binrule.prepend(QString("0").repeated(8 - m_binrule.length()));
+    m_binrule = std::bitset<8>(attr("rule").toInt());
 
     return m_stateAttrId >= 0;
 }
@@ -82,25 +80,7 @@ Value CellularAutomata1D::nextState(const Node& leftNode, const Node& node, cons
     bool center = node.attr(m_stateAttrId).toBool();
     bool right = rightNode.attr(m_stateAttrId).toBool();
 
-    bool r = false;
-    if (left && center && right) {
-        r = m_binrule.at(0) == "1";
-    } else if (left && center && !right) {
-        r = m_binrule.at(1) == "1";
-    } else if (left && !center && right) {
-        r = m_binrule.at(2) == "1";
-    } else if (left && !center && !right) {
-        r = m_binrule.at(3) == "1";
-    } else if (!left && center && right) {
-        r = m_binrule.at(4) == "1";
-    } else if (!left && center && !right) {
-        r = m_binrule.at(5) == "1";
-    } else if (!left && !center && right) {
-        r = m_binrule.at(6) == "1";
-    } else if (!left && !center && !right) {
-        r = m_binrule.at(7) == "1";
-    }
-    return Value(r);
+    return Value(m_binrule[left*4 + center*2 + right]);
 }
 
 int CellularAutomata1D::linearIdx(int row, int col) const

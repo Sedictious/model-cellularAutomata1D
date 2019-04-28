@@ -3,8 +3,8 @@
   "uid": "cellularAutomata1D",
   "version": 1,
   "title": "Cellular Automata 1D",
-  "author": "Ethan Padden and Marcos Cardinot",
-  "description": "This model implements a few elementary cellular automaton rules.",
+  "author": "Ethan Padden, Marcos Cardinot and Eleftheria Chatziargyriou",
+  "description": "This model implements elementary cellular automata.",
 
   "pluginAttributesScope": [ {"rule": "int[0,255]"} ],
   "nodeAttributesScope": [ {"state": "bool"} ],
